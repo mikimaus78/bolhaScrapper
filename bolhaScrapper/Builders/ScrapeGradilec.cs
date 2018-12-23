@@ -12,7 +12,7 @@ namespace bolhaScrapper.Builders
     {
         private string _data;
         private string _regex;
-        RegexOptions _regexOption;
+        private RegexOptions _regexOption;
         private List<ScrapeDataDeli> _part;
 
         public ScrapeGradilec()
@@ -57,7 +57,6 @@ namespace bolhaScrapper.Builders
             scrapeData.RegexOption = _regexOption;
             scrapeData.Parts = _part;
             return scrapeData;
-
         }
     }
 }
