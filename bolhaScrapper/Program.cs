@@ -37,17 +37,16 @@ namespace bolhaScrapper
             try
             {
                 string[] str = new string[]
- {
-        " ________                     __      ",
-        "/        |                   /  |     ",
-        "$$$$$$$$/______    _______  _$$ |_    ",
-        "   $$ | /      \\  /       |/ $$   |  ",
-        "   $$ |/$$$$$$  |/$$$$$$$/ $$$$$$/    ",
-        "   $$ |$$    $$ |$$      \\   $$ | __ ",
-        "   $$ |$$$$$$$$/  $$$$$$  |  $$ |/  | ",
-        "   $$ |$$       |/     $$/   $$  $$/  ",
-        "   $$/  $$$$$$$/ $$$$$$$/     $$$$/   \n"
- };
+                     {
+                            @" _           _ _            _____                                      ",
+                            @"| |         | | |          / ____|                                     ",
+                            @"| |__   ___ | | |__   __ _| (___   ___ _ __ __ _ _ __  _ __   ___ _ __ ",
+                            @"| '_ \ / _ \| | '_ \ / _` |\___ \ / __| '__/ _` | '_ \| '_ \ / _ \ '__|",
+                            @"| |_) | (_) | | | | | (_| |____) | (__| | | (_| | |_) | |_) |  __/ |   ",
+                            @"|_.__/ \___/|_|_| |_|\__,_|_____/ \___|_|  \__,_| .__/| .__/ \___|_|   ",
+                            @"                                                | |   | |              ",
+                            "                                                |_|   |_|              \n"
+                     };
                 var index = 3;
                 foreach (var item in str)
                 {
@@ -126,17 +125,17 @@ namespace bolhaScrapper
 
                             if (result)
                             {
-                                Console.OutputEncoding = System.Text.Encoding.Default;
+                                Console.OutputEncoding = System.Text.Encoding.ASCII;
                                 Console.WriteLine(scrapedElement + "\n");
                             }
                             else if (resultSlash)
                             {
-                                Console.OutputEncoding = System.Text.Encoding.Default;
+                                Console.OutputEncoding = System.Text.Encoding.ASCII;
                                 Console.WriteLine("http://www.bolha.com/" + scrapedElement + "\n");
                             }
                             else
                             {
-                                Console.OutputEncoding = System.Text.Encoding.Default;
+                                Console.OutputEncoding = System.Text.Encoding.ASCII;
                                 Console.WriteLine("##############################################################\n");
                                 Console.WriteLine(scrapedElement + "\n");
                             }
@@ -148,9 +147,9 @@ namespace bolhaScrapper
                         Console.WriteLine("Nismo našli ničesar :(");
                     }
                         
+                    Console.WriteLine("\n\n\n\nNašli smo {0} zadetkov!\n###########################################################", scrapedElementi.Count);
 
                 }
-
                 Console.ReadLine();
 
             }
