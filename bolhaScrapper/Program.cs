@@ -36,6 +36,7 @@ namespace bolhaScrapper
 
             try
             {
+                Console.OutputEncoding = System.Text.Encoding.UTF8;
                 string[] str = new string[]
                      {
                             @" _           _ _            _____                                      ",
@@ -92,8 +93,10 @@ namespace bolhaScrapper
                 using (WebClient client = new WebClient())
                 {
                     client.Headers["User-Agent"] = "Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US)";
+                    client.Encoding = Encoding.UTF8;
 
                     string content = client.DownloadString($"http://www.bolha.com/{kategorija}");
+
 
                     ScrapeData scrapeData = new ScrapeGradilec()
                         .WithData(content)
@@ -108,7 +111,7 @@ namespace bolhaScrapper
                             .WithRegex(@"href=\""(.*?)\""")
                             .WithRegexOption(RegexOptions.Singleline)
                             .Builder())
-                        
+
                         .Build();
 
                     Scraper scraper = new Scraper();
@@ -117,7 +120,7 @@ namespace bolhaScrapper
 
                     if (scrapedElementi.Any())
                     {
-                        foreach(var scrapedElement in scrapedElementi)
+                        foreach (var scrapedElement in scrapedElementi)
                         {
                             CultureInfo ci = new CultureInfo("en-US");
                             bool result = scrapedElement.StartsWith("http", true, ci);
@@ -125,17 +128,14 @@ namespace bolhaScrapper
 
                             if (result)
                             {
-                                Console.OutputEncoding = System.Text.Encoding.ASCII;
                                 Console.WriteLine(scrapedElement + "\n");
                             }
                             else if (resultSlash)
                             {
-                                Console.OutputEncoding = System.Text.Encoding.ASCII;
                                 Console.WriteLine("http://www.bolha.com/" + scrapedElement + "\n");
                             }
                             else
                             {
-                                Console.OutputEncoding = System.Text.Encoding.ASCII;
                                 Console.WriteLine("##############################################################\n");
                                 Console.WriteLine(scrapedElement + "\n");
                             }
@@ -146,7 +146,7 @@ namespace bolhaScrapper
                     {
                         Console.WriteLine("Nismo našli ničesar :(");
                     }
-                        
+
                     Console.WriteLine("\n\n\n\nNašli smo {0} zadetkov!\n###########################################################", scrapedElementi.Count);
 
                 }
